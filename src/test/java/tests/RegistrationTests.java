@@ -1,37 +1,21 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
-public class RegistrationTests {
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-    }
+public class RegistrationTests extends TestBase {
 
     @Test
     void successfulRegistrationTest() {
         String firstName = "Sergey",
                 lastName = "Konoplev",
+                fullName = firstName + " " + lastName,
                 userEmail = "sergeyKonoplev@gmail.com",
                 gender = "Male",
                 userNumber = "9875036934",
-                fullDateOfBirth = "08 May,1996",
                 dayOfBirth = "08",
                 monthOfBirth = "May",
                 yearOfBirth = "1996",
+                fullDateOfBirth = dayOfBirth + " " + monthOfBirth + "," + yearOfBirth,
                 subjects = "Maths",
                 hobbies = "Sports",
                 picture = "img/1.png",
@@ -41,38 +25,32 @@ public class RegistrationTests {
                 city = "Delhi",
                 stateAndCity = state + " " + city;
 
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        Selenide.executeJavaScript("$('#RightSide_Advertisement').remove()");
-        Selenide.executeJavaScript("$('footer').remove()");
+        registrationPage.openPage()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(userEmail)
+                .setGender(gender)
+                .setNumber(userNumber)
+                .setBirthDay(dayOfBirth, monthOfBirth, yearOfBirth)
+                .setSubjects(subjects)
+                .setHobbies(hobbies)
+                .setUploadPic(picture)
+                .setCurrentAddress(currentAddress)
+                .setState(state)
+                .setCity(city)
+                .setSubmit();
 
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userEmail);
-        $("#genterWrapper").$(byText(gender)).click();
-        $("#userNumber").setValue(userNumber);
-
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption(monthOfBirth);
-        $(".react-datepicker__year-select").selectOption(yearOfBirth);
-        $(".react-datepicker__day--0" + dayOfBirth + ":not(.react-datepicker__day--outside-month)").click();
-
-        $("#subjectsInput").setValue(subjects).pressEnter();
-        $("#hobbiesWrapper").$(byText(hobbies)).click();
-        $("#uploadPicture").uploadFromClasspath(picture);
-        $("#currentAddress").setValue(currentAddress);
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText(state)).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText(city)).click();
-        $("#submit").click();
-
-        $(".modal-content").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(
-                text(firstName), text(lastName), text(userEmail), text(gender),
-                text(userNumber), text(fullDateOfBirth), text(subjects), text(hobbies),
-                text(verifyPicture), text(currentAddress), text(stateAndCity));
+        registrationPage.verifyResultModalAppears()
+                .verifyResults("Student Name", fullName)
+                .verifyResults("Student Email", userEmail)
+                .verifyResults("Gender", gender)
+                .verifyResults("Mobile", userNumber)
+                .verifyResults("Date of Birth", fullDateOfBirth)
+                .verifyResults("Subjects", subjects)
+                .verifyResults("Hobbies", hobbies)
+                .verifyResults("Picture", verifyPicture)
+                .verifyResults("Address", currentAddress)
+                .verifyResults("State and City", stateAndCity);
     }
 }
 
