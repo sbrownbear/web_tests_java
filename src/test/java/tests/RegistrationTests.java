@@ -4,53 +4,37 @@ import org.junit.jupiter.api.Test;
 
 public class RegistrationTests extends TestBase {
 
+    TestData data = new TestData();
+
     @Test
     void successfulRegistrationTest() {
-        String firstName = "Sergey",
-                lastName = "Konoplev",
-                fullName = firstName + " " + lastName,
-                userEmail = "sergeyKonoplev@gmail.com",
-                gender = "Male",
-                userNumber = "9875036934",
-                dayOfBirth = "08",
-                monthOfBirth = "May",
-                yearOfBirth = "1996",
-                fullDateOfBirth = dayOfBirth + " " + monthOfBirth + "," + yearOfBirth,
-                subjects = "Maths",
-                hobbies = "Sports",
-                picture = "img/1.png",
-                verifyPicture = "1.png",
-                currentAddress = "Russia",
-                state = "NCR",
-                city = "Delhi",
-                stateAndCity = state + " " + city;
 
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(gender)
-                .setNumber(userNumber)
-                .setBirthDay(dayOfBirth, monthOfBirth, yearOfBirth)
-                .setSubjects(subjects)
-                .setHobbies(hobbies)
-                .setUploadPic(picture)
-                .setCurrentAddress(currentAddress)
-                .setState(state)
-                .setCity(city)
+                .setFirstName(data.firstNameData)
+                .setLastName(data.lastNameData)
+                .setEmail(data.userEmailData)
+                .setGender(data.genderData)
+                .setNumber(data.userNumberData)
+                .setBirthDay(data.dayOfBirthData, data.monthOfBirthData, data.yearOfBirthData)
+                .setSubjects(data.subjectsData)
+                .setHobbies(data.hobbiesData)
+                .setUploadPic(data.pictureData)
+                .setCurrentAddress(data.currentAddressData)
+                .setState(data.stateData)
+                .setCity(data.cityData)
                 .setSubmit();
 
         registrationPage.verifyResultModalAppears()
-                .verifyResults("Student Name", fullName)
-                .verifyResults("Student Email", userEmail)
-                .verifyResults("Gender", gender)
-                .verifyResults("Mobile", userNumber)
-                .verifyResults("Date of Birth", fullDateOfBirth)
-                .verifyResults("Subjects", subjects)
-                .verifyResults("Hobbies", hobbies)
-                .verifyResults("Picture", verifyPicture)
-                .verifyResults("Address", currentAddress)
-                .verifyResults("State and City", stateAndCity);
+                .verifyResults("Student Name", data.fullNameDate)
+                .verifyResults("Student Email", data.userEmailData)
+                .verifyResults("Gender", data.genderData)
+                .verifyResults("Mobile", data.userNumberData)
+                .verifyResults("Date of Birth", data.fullDateOfBirthData)
+                .verifyResults("Subjects", data.subjectsData)
+                .verifyResults("Hobbies", data.hobbiesData)
+                .verifyResults("Picture", data.verifyPictureData)
+                .verifyResults("Address", data.currentAddressData)
+                .verifyResults("State and City", data.stateAndCityData);
     }
 }
 
