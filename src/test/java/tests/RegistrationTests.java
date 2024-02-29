@@ -3,6 +3,7 @@ package tests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationTests extends TestBase {
@@ -10,6 +11,7 @@ public class RegistrationTests extends TestBase {
     TestData data = new TestData();
 
     @Test
+    @Tag("Smoke")
     @Feature("Создание аккаунта пользователя в системе")
     @Owner("Коноплев Сергей")
     @Severity(SeverityLevel.BLOCKER)
@@ -46,6 +48,7 @@ public class RegistrationTests extends TestBase {
     }
 
     @Test
+    @Tag("Smoke")
     @Feature("Создание аккаунта пользователя в системе")
     @Owner("Коноплев Сергей")
     @Severity(SeverityLevel.BLOCKER)
@@ -82,6 +85,7 @@ public class RegistrationTests extends TestBase {
     }
 
     @Test
+    @Tag("Smoke")
     @Feature("Создание аккаунта пользователя в системе")
     @Owner("Коноплев Сергей")
     @Severity(SeverityLevel.BLOCKER)
