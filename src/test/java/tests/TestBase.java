@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
@@ -27,6 +28,7 @@ public class TestBase {
         Configuration.browser = "chrome";
         Configuration.browserVersion = "100.0";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Selenide.clearBrowserCookies();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
