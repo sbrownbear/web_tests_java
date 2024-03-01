@@ -11,16 +11,16 @@
 - Генерация тестовых данных JavaFaker
 
 ### Allure-отчет и addListener
-<img alt='Allure' height='595' src='src/test/resources/imgReadme/allure.png'>
+<img alt='Allure' height='480' src='src/test/resources/imgReadme/allure.png'>
 
 ### Allure-отчет и Attachments
-<img alt='AllureAttach' height='594' src='src/test/resources/imgReadme/allureAttach.png'>
+<img alt='AllureAttach' height='481' src='src/test/resources/imgReadme/allureAttach.png'>
 
 ### Сборка в Jenkins
-<img alt='Jenkins' height='612' src='src/test/resources/imgReadme/jenkins.png'>
+<img alt='Jenkins' height='496' src='src/test/resources/imgReadme/jenkins.png'>
 
 ### Скриншот в конце теста
-<img alt='Allure' height='563' src='src/test/resources/imgReadme/screenShot.png'>
+<img alt='Allure' height='456' src='src/test/resources/imgReadme/screenShot.png'>
 
 ### Успешный тест и структура проекта
-<img alt='LocalTest' height='672' src='src/test/resources/imgReadme/localTest.png'>
+<img alt='LocalTest' height='543' src='src/test/resources/imgReadme/localTest.png'>
