@@ -38,6 +38,7 @@ public class RegistrationPage {
                 .shouldHave(text("Student Registration Form"));
         Selenide.executeJavaScript("$('#RightSide_Advertisement').remove()");
         Selenide.executeJavaScript("$('footer').remove()");
+        Selenide.executeJavaScript("$('#Ad.Plus-970x250-2').remove()");
         $(byText("Consent")).click();
         return this;
     }
