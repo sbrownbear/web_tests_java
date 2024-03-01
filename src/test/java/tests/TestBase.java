@@ -28,7 +28,6 @@ public class TestBase {
         Configuration.browser = "chrome";
         Configuration.browserVersion = "100.0";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        Selenide.clearBrowserCookies();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
